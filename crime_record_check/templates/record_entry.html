@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block head %}
+          
+          <a class="navbar-brand" href="{% url 'record_entry_form_NID' %}">Police Record Management</a>
+{% endblock head %}
+{% block navbar %}
+<div class="navbar-nav">
+    <a class="nav-link active" aria-current="page" href="{% url 'record_entry_form_NID' %}">Record Entry NID</a>
+    <a class="nav-link" href="{% url 'record_entry_form_DOB' %}">Record Entry DOB</a>
+    <a class="nav-link" href="{% url 'record_check_NID' %}">Record Check NID</a>
+    <a class="nav-link" href="{% url 'record_check_DOB' %}">Record Check DOB</a>
+    <a class="nav-link" href="{% url 'signout' %}">Signout</a>
+</div>
+    
+{% endblock navbar %}
+{% block content %}
+<div style="width : 50% ; margin : auto">
+    <form method="post" enctype="multipart/form-data">   
+        {% csrf_token %}
+        <h1> Police Record Entry NID</h1>
+        {{form|crispy}}
+        <input type="submit" value="submit" class = "bg-success text-white">
+    </form>
+</div>
+{% endblock content %}

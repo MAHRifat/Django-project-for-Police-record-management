@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block head %}
+          
+          <a class="navbar-brand" href="{% url 'record_entry_form_NID' %}">Police Record Management</a>
+{% endblock head %}
+{% block navbar %}
+<div class="navbar-nav">
+    <a class="nav-link" href="{% url 'record_entry_form_NID' %}">Record Entry NID</a>
+    <a class="nav-link" href="{% url 'record_entry_form_DOB' %}">Record Entry DOB</a>
+    <a class="nav-link" href="{% url 'record_check_NID' %}">Record Check NID</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'record_check_DOB' %}">Record Check DOB</a>
+    <a class="nav-link" href="{% url 'signout' %}">Signout</a>
+</div>
+    
+{% endblock navbar %}
+{% block content %}
+
+{% if query %}
+                    <div style="width : 90% ; margin : auto; text-align: center">
+                        <h1>Record search using DOB</h1>
+                        {% if post %}
+                        <div style="display: flex;
+                        flex-wrap: wrap;
+                        justify-content: space-evenly;">
+                        {% for i in post %}
+                        <div class="card col-md-3" style="width: 60vw; height: 80%;  ">
+                            <img src="{{i.picture.url}}" style="height: 27vh;  width: 28vw;margin-left : 16vw;
+                            background-size: cover;
+                            margin-top : 1vh;
+                            border-radius: 2px; ">
+                            <div class="card-body" style="text-align: left ; margin-left : 11vw;"> 
+                                <h5 class="card-title">Name: {{i.name}}</h5>
+                                <h6 class="card-title">Father name: {{i.father_name}}</h6>     
+                                <h6 class="card-title">Mother name: {{i.mother_name}}</h6>     
+                                <h6 class="card-title">Address: {{i.Address}}</h6>     
+                                <h6 class="card-title">Phone no: {{i.phone_number}}</h6>     
+                                <h6 class="card-title">Birthmark: {{i.birthmark}}</h6>     
+                                <h6 class="card-title">Extra Identification Mark: {{i.extraIdentificationMark}}</h6>     
+                                <h6 class="card-title">Crime_type: {{i.crime_type}}</h6>     
+                                <h6 class="card-title">Crime_location: {{i.crime_location}}</h6>     
+                                <h6 class="card-title">Crime date and time: {{i.crime_date_time}}</h6>     
+                                <h6 class="card-title">Crime status: {{i.crime_status}}</h6>     
+                        
+                            </div>
+                            {% comment %} <a href="{% url 'course_details' i.id %}">more</a> {% endcomment %}
+                        </div>
+                            {% endfor %}
+                        </div>
+                          {% else %}
+                          <h3 style = "margin-top : 20vh;">No record found for this NID </h3>
+                          {% endif %}
+                    
+                    </div>
+{% endif %}
+
+{% endblock content %}
