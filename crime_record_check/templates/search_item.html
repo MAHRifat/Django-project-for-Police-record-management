@@ -1,56 +1,74 @@
 {% extends "base.html" %}
 {% block head %}
           
-          <a class="navbar-brand" href="{% url 'record_entry_form_NID' %}">Police Record Management</a>
+          <a class="navbar-brand " href="{% url 'record_entry_form_NID' %}">Police Record Management</a>
 {% endblock head %}
 {% block navbar %}
 <div class="navbar-nav">
-    <a class="nav-link" href="{% url 'record_entry_form_NID' %}">Record Entry NID</a>
-    <a class="nav-link" href="{% url 'record_entry_form_DOB' %}">Record Entry DOB</a>
-    <a class="nav-link active" aria-current="page" href="{% url 'record_check_NID' %}">Record Check NID</a>
-    <a class="nav-link" href="{% url 'record_check_DOB' %}">Record Check DOB</a>
-    <a class="nav-link" href="{% url 'signout' %}">Signout</a>
+    <a class="nav-link " href="{% url 'record_entry_form_NID' %}">Record Entry NID</a>
+    <a class="nav-link " href="{% url 'record_entry_form_DOB' %}">Record Entry DOB</a>
+    <a class="nav-link active " aria-current="page" href="{% url 'record_check_NID' %}">Record Check NID</a>
+    <a class="nav-link " href="{% url 'record_check_DOB' %}">Record Check DOB</a>
+    <a class="nav-link " href="{% url 'signout' %}">Signout</a>
 </div>
     
 {% endblock navbar %}
 {% block content %}
 
 {% if query %}
-                    <div style="width : 90% ; margin : auto; text-align: center">
-                        <h1>Record search using NID</h1>
+                    <div style="width : 70% ; margin : auto; text-align: center; border: 2px solid black; padding: 2rem; border-radius: 1.5rem;">
+                        <h1 style="margin-bottom: 1rem;">Record search using NID</h1>
                         {% if post %}
                         <div style="display: flex;
                         flex-wrap: wrap;
                         justify-content: space-evenly;">
                         {% for i in post %}
-                        <div class="card col-md-3" style="width: 60vw; height: 80%;  ">
-                            <img src="{{i.picture.url}}" style="height: 27vh;  width: 28vw;margin-left : 16vw;
+                        <div class="card col-md-3" style="width: 50%; height: 80%; align-items: center; ">
+                            <img src="{{i.picture.url}}" style="height: 13rem;  width: 12rem; 
                             background-size: cover;
                             margin-top : 1vh;
                             border-radius: 2px; ">
-                            <div class="card-body" style="text-align: left ; margin-left : 11vw;"> 
-                                <h5 class="card-title">Name: {{i.name}}</h5>
-                                <h6 class="card-title">Father name: {{i.father_name}}</h6>     
-                                <h6 class="card-title">Mother name: {{i.mother_name}}</h6>     
-                                <h6 class="card-title">Address: {{i.Address}}</h6>     
-                                <h6 class="card-title">Phone no: {{i.phone_number}}</h6>     
-                                <h6 class="card-title">Birthmark: {{i.birthmark}}</h6>     
-                                <h6 class="card-title">Extra Identification Mark: {{i.extraIdentificationMark}}</h6>     
-                                <h6 class="card-title">Crime_type: {{i.crime_type}}</h6>     
-                                <h6 class="card-title">Crime_location: {{i.crime_location}}</h6>     
-                                <h6 class="card-title">Crime date and time: {{i.crime_date_time}}</h6>     
-                                <h6 class="card-title">Crime status: {{i.crime_status}}</h6>     
+                            {% comment %} <div class="card-body" style="text-align: left ;align-items: center; ">  {% endcomment %}
+                                <h5 class="card-title"><b>Name:- {{i.name}}</b></h5>
+                                <h6 class="card-title"><b>Father name:-</b> {{i.father_name}}</h6>     
+                                <h6 class="card-title"><b>Mother name:-</b> {{i.mother_name}}</h6>     
+                                <h6 class="card-title"><b>Address:-</b> {{i.Address}}</h6>     
+                                <h6 class="card-title"><b>Phone no:-</b> {{i.phone_number}}</h6>     
+                                <h6 class="card-title"><b>Birthmark:-</b> {{i.birthmark}}</h6>     
+                                <h6 class="card-title"><b>Extra Identification Mark:-</b> {{i.extraIdentificationMark}}</h6>     
+                                <h6 class="card-title"><b>Crime_type:-</b> {{i.crime_type}}</h6>     
+                                <h6 class="card-title"><b>Crime_location:-</b> {{i.crime_location}}</h6>     
+                                <h6 class="card-title"><b>Crime date and time:-</b> {{i.crime_date_time}}</h6>     
+                                <h6 class="card-title"><b>Crime status:-</b> {{i.crime_status}}</h6>     
                         
-                            </div>
+                            {% comment %} </div> {% endcomment %}
                             {% comment %} <a href="{% url 'course_details' i.id %}">more</a> {% endcomment %}
                         </div>
                             {% endfor %}
-                        </div>
-                          {% else %}
-                          <h3 style = "margin-top : 20vh;">No record found for this NID </h3>
+                            {% else %}
+                          
+                            <h3 style = "margin-top : 20vh;">No record found for this NID </h3>
+                    
                           {% endif %}
+                        </div>
+                          
                     
                     </div>
 {% endif %}
 
 {% endblock content %}
+
+{% block footer%}
+      <footer style = " text-align : center;height: 5rem;width:100vw; color : black; position: relative; bottom: 0; margin-top: 1.5rem; margin-bottom: 0;" class="bg-info p-2 ">
+        <div class="" style= "">
+          <div class="" style ="color: white;">
+            <a href="#" >Conditions of Use</a>
+            <a href="#">Privacy Notice</a>
+            <a href="#">Your Ads Privacy Choice</a>
+        </div>
+            <div class="" style ="color: white;">
+                © 1996-2023, policerecordmanagement.com, Inc. or its affiliates
+            </div>
+        </div>
+    </footer>
+    {% endblock footer%}

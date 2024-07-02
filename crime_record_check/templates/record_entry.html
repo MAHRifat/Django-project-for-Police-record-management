@@ -15,12 +15,12 @@
     
 {% endblock navbar %}
 {% block content %}
-<div style="width : 50% ; margin : auto">
+<div style="width : 50% ; margin : auto; margin-top: 1.5rem; border: 2px solid black; padding: 2rem; border-radius: 1.5rem;" >
     <form method="post" enctype="multipart/form-data">   
         {% csrf_token %}
         <h1> Police Record Entry NID</h1>
         {{form|crispy}}
-        <input type="submit" value="submit" class = "bg-success text-white">
+        <input type="submit" value="submit" class = "bg-info" style="border-radius: .5rem; ">
     </form>
 </div>
 {% endblock content %}

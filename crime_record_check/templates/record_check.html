@@ -14,7 +14,8 @@
     
 {% endblock navbar %}
 {% block content %}
-<h3 style = "text-align : center; padding-top: 8vh;"> Search record using NID number </h3>
+<div style="width : 70% ; margin : auto; margin-top: 1.5rem; border: 2px solid black; padding: 2rem; border-radius: 1.5rem;">
+    <h3 style = "text-align : center; padding-top: 8vh;"> Search record using NID number </h3>
 <form class="d-flex" role="search" method="POST" style="margin : 15vw;margin-top : 30vh;" action="{% url 'search-view' %}">
     {% csrf_token %}
     <input
@@ -25,7 +26,7 @@
        required aria-label="Search"
        
     >
-    <button class="btn btn-outline-success" type="submit">Search</button>
+    <button class="btn btn-outline-info" type="submit">Search</button>
    </form>
-
+</div>
 {% endblock content %}
